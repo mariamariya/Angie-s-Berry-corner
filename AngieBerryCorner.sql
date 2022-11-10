@@ -4,11 +4,12 @@ create table Customer(
 	last_name varchar(35)
 );
 
-drop table Customer
 
---insert data using the copy command method--
+--load data into Customer table using the copy command method--
 copy Customer 
-from 'C:\Program Files\PostgreSQL\loyalty_customers.csv' delimiter ',' csv header
+from 'C:\Program Files\PostgreSQL\loyalty_customers.csv' delimiter ',' csv header;
+
+
 
 create table Employee(
 	employee_id int PRIMARY KEY,
@@ -18,6 +19,7 @@ create table Employee(
 	end_date date
 );
 
+--load data into Employee table using the copy command method--
 copy Employee
 from 'C:\Program Files\PostgreSQL\employee.csv' delimiter ',' csv header;
 
@@ -30,14 +32,9 @@ create table Transaction(
 	Amount int
 );
 
-drop table Transaction
-
-
+--load data into Transaction table using the copy command method--
 copy Transaction
 from 'C:\Program Files\PostgreSQL\transaction_report.csv' delimiter ',' csv header;
-
-select * 
-from Transaction
 
 
 create table Product(
@@ -47,26 +44,22 @@ create table Product(
 	unit varchar
 );
 
-drop table Product;
 
-
+--load data into Product table using the copy command method--
 copy Product
 from 'C:\Program Files\PostgreSQL\products.csv' delimiter ',' csv header;
 
-select *
-	--concat(first_name, ' ', last_name) as full_name
-from Employee;
-
 
 --what is angies berry corners average daily sales volume--
+
 select 
 	avg(quantity) as AvgDailySales,
 	avg(amount) as avgsalesamount
 from transaction;
 
-**On average, Angie’s berry corner sells 1 product daily and makes approximately 43,654.**
 
---Which products sell best?
+--Which products sell best?--
+
 select p.product_id,
 	p.name,
 	sum(quantity) as total_qty,
@@ -78,7 +71,9 @@ group by 1,2
 order by 3 desc,4 desc
 limit 5;
 
+
 --Top 5 Angie loyalty customer?--
+
 select  distinct t.customer_id,
 	concat(first_name, ' ', last_name) as full_name,
 	t.amount,
@@ -90,7 +85,9 @@ group by 1,2,3
 order by 4 desc
 limit 5;
 
+
 --What is the full name of their current staff?--
+
 select 
 	employee_id,
 	concat(first_name, ' ', last_name) as full_name
@@ -98,7 +95,8 @@ from employee
 where end_date is null;
 
 
---What is the product that generate the least income and by much
+--What is the product that generate the least income and by much?--
+
 select t.product_id,
 	p.name,
 	sum(amount)
@@ -111,13 +109,13 @@ limit 1;
 
 
 -- The organization want to ascertain the income realize from sales--
+
 select 
 	sum(amount) as total_income
 from Transaction
 where amount is not null;
 
-/*The organization want to ascertain the amount
-they generate from each product*/
+/*The organization want to ascertain the amount they generate from each product*/
 
 select 
 	p.name,
@@ -128,7 +126,9 @@ on t.product_id = p.product_id
 group by 1
 order by 2 desc;
 
+
 --Product that generate the highest income and by how much--
+
 select
 	 p.name,
 	 sum(amount) as total_income
@@ -139,8 +139,7 @@ group by 1
 order by 2 desc
 limit 1;
 
-/* the organization is looking at identifying the customer
-that patronize them the most in order for them to encourage them with a gift*/
+/* the organization is looking at identifying the customer that patronize them the most in order for them to encourage them with a gift*/
 
 select
 	concat(first_name, ' ', last_name) as full_name,
@@ -151,7 +150,9 @@ on t.customer_id = c.customer_id
 group by 1
 order by 2 desc;
 
---which customer generate least income and by how much?
+
+--which customer generate least income and by how much?--
+
 select distinct t.customer_id,
 	concat(first_name, ' ', last_name) as full_name,
 	sum(amount)
@@ -162,7 +163,8 @@ group by 1,2
 order by 3,2 asc
 limit 5;
 
---which of the employee spend the least day at angie.
+--which of the employee spend the least day at angie.--
+
 select employee_id,
 	concat(first_name,' ', last_name) as full_name,
 	start_date,
@@ -175,7 +177,8 @@ order by 5 asc
 limit 1;
 
 
---What is the organization busiest hour?
+--What is the organization busiest hour?--
+
 select
 	date_part('hour', paid_at) as hour,
 	sum(quantity) as total_qty,
@@ -184,7 +187,9 @@ from Transaction
 group by 1
 order by 2 desc;
 
--- Which day of the week does the organization sales the most
+
+-- Which day of the week does the organization sales the most--
+
 select 
 	to_char(paid_at, 'Day') as day,
  	sum(amount) as total_amount,
@@ -193,7 +198,10 @@ from Transaction
 group by 1
 order by 2 desc, 3 desc;
 
---Which month of the year does the organization makes the most sales
+
+
+--Which month of the year does the organization makes the most sales--
+
 select 
 	sum(amount) as total_amount,
 	sum(quantity) as total_qty,
@@ -202,6 +210,3 @@ select
 from transaction
 group by 3,4
 order by 1 desc,2 desc;
-
-
-
