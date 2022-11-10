@@ -4,7 +4,7 @@ create table Customer(
 	last_name varchar(35)
 );
 
-drop table Customer
+
 
 --insert data using the copy command method--
 copy Customer 
@@ -18,6 +18,7 @@ create table Employee(
 	end_date date
 );
 
+--insert data using the copy command method--
 copy Employee
 from 'C:\Program Files\PostgreSQL\employee.csv' delimiter ',' csv header;
 
@@ -30,14 +31,9 @@ create table Transaction(
 	Amount int
 );
 
-drop table Transaction
-
-
+--insert data using the copy command method--
 copy Transaction
 from 'C:\Program Files\PostgreSQL\transaction_report.csv' delimiter ',' csv header;
-
-select * 
-from Transaction
 
 
 create table Product(
@@ -47,15 +43,11 @@ create table Product(
 	unit varchar
 );
 
-drop table Product;
 
-
+--insert data using the copy command method--
 copy Product
 from 'C:\Program Files\PostgreSQL\products.csv' delimiter ',' csv header;
 
-select *
-	--concat(first_name, ' ', last_name) as full_name
-from Employee;
 
 
 --what is angies berry corners average daily sales volume--
@@ -64,7 +56,7 @@ select
 	avg(amount) as avgsalesamount
 from transaction;
 
---Which products sell best?
+--Which products sell best?--
 select p.product_id,
 	p.name,
 	sum(quantity) as total_qty,
@@ -203,3 +195,7 @@ order by 1 desc,2 desc;
 
 
 
+Select *
+From PortfolioProject..CovidDeaths
+Where continent is not null 
+order by 3,4
