@@ -64,6 +64,8 @@ select
 	avg(amount) as avgsalesamount
 from transaction;
 
+**On average, Angie’s berry corner sells 1 product daily and makes approximately 43,654.**
+
 --Which products sell best?
 select p.product_id,
 	p.name,
