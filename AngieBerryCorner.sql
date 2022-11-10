@@ -148,7 +148,8 @@ from Transaction t
 join Customer c
 on t.customer_id = c.customer_id 
 group by 1
-order by 2 desc;
+order by 2 desc
+limit 5;
 
 
 --which customer generate least income and by how much?--
@@ -185,7 +186,8 @@ select
 	sum(amount) as total_amount
 from Transaction
 group by 1
-order by 2 desc;
+order by 2 desc
+limit 1;
 
 
 -- Which day of the week does the organization sales the most--
@@ -196,7 +198,8 @@ select
 	sum(quantity) as total_qty
 from Transaction
 group by 1
-order by 2 desc, 3 desc;
+order by 2 desc, 3 desc
+limit 1;
 
 
 
@@ -209,4 +212,5 @@ select
 	to_char(paid_at,'Month') as month_name
 from transaction
 group by 3,4
-order by 1 desc,2 desc;
+order by 1 desc,2 desc
+limit 1;
