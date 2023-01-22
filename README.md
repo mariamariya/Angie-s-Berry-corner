@@ -1,5 +1,15 @@
-# [Angie-s-Berry-corner]
-A collection of SQL codes written for Angie's berry Corner
+# Angie-s-Berry-corner
+
+This project contains SQL queries written to query a fruit store's database for key insights to help retailers market better and effectively, and to establish trends that help them capitalize on customer behaviour.
+
+Data Source:
+
+The database was gotten from https://www.techchak.com/ and it contains four tables:  **customer**, **employee**, **transaction**, and **product**.
+- customer table contains information of all Angie Berry's customer first and last names and their unique ids. 
+- employee table has the list of all 10 employees, start date, and end date if they have resigned or been fired.
+- transaction table which contain a list of the last 100,000 transactions as of 19th August 2019 and attributes (id, customer_id, product_id, quantity, paid_at, Amount) 
+-  product table which has the names of all 12 products currently sold, the product_id, unit, and product price.
+
 
 # Background
 
@@ -7,8 +17,8 @@ Angie’s Berry corner is a fruit store located in LA and has sorted the help of
 We were provided with 4 tables presented in an excel format namely: 
 - transaction_report with columns (id, customer_id, product_id, quantity, paid_at, Amount) which contain a list of the last 100,000 transactions as of 19th August 2019.
 - loyalty_customers which has the name of all their customers and id.
-- products table which has the name of all 12 products currently sold, id, unit, and price.
-- employees’ table  which contains the list of all 10 employees, start date, and end date if they have resigned or been fired.
+- product table which has the name of all 12 products currently sold, id, unit, and price.
+- employee table  which contains the list of all 10 employees, start date, and end date if they have resigned or been fired.
 
 # Methodology
 - Since Angie’s Berry corner have no database, a database was created, 4 tables were created within the database, and data was stored in the tables using the copy command method in PostgreSQL.
