@@ -4,7 +4,7 @@ This project contains SQL queries written to query a fruit store's database for 
 
 Data Source:
 
-The database was gotten from https://www.techchak.com/ and it contains four tables:  **customer**, **employee**, **transaction**, and **product**.
+The dataset was gotten from https://www.techchak.com/ and it contains four tables:  **customer**, **employee**, **transaction**, and **product**.
 - customer table contains information of all Angie Berry's customer first and last names and their unique ids. 
 - employee table has the list of all 10 employees, start date, and end date if they have resigned or been fired.
 - transaction table which contain a list of the last 100,000 transactions as of 19th August 2019 and attributes (id, customer_id, product_id, quantity, paid_at, Amount) 
