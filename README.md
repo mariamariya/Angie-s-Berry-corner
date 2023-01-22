@@ -1,4 +1,4 @@
-# Angie-s-Berry-corner
+# Angie-s-Berry-corner-DB
 
 This project contains SQL queries written to query a fruit store's database for key insights to help retailers market better and effectively, and to establish trends that help them capitalize on customer behaviour.
 
