@@ -139,7 +139,7 @@ group by 1
 order by 2 desc
 limit 1;
 
-/* the organization is looking at identifying the customer that patronize them the most in order for them to encourage them with a gift*/
+/* Which customers patronize Angie Berry the most*/
 
 select
 	concat(first_name, ' ', last_name) as full_name,
