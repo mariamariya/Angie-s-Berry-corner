@@ -50,7 +50,7 @@ copy Product
 from 'C:\Program Files\PostgreSQL\products.csv' delimiter ',' csv header;
 
 
---what is angies berry corners average daily sales volume--
+--What's angies berry corners average daily sales volume--
 
 select 
 	avg(quantity) as AvgDailySales,
@@ -72,7 +72,7 @@ order by 3 desc,4 desc
 limit 5;
 
 
---Top 5 Angie loyalty customer?--
+--Who are the top 5 Angie loyalty customer?--
 
 select  distinct t.customer_id,
 	concat(first_name, ' ', last_name) as full_name,
@@ -86,7 +86,7 @@ order by 4 desc
 limit 5;
 
 
---What is the full name of their current staff?--
+--What's the full name of their current staffs?--
 
 select 
 	employee_id,
@@ -95,7 +95,7 @@ from employee
 where end_date is null;
 
 
---What is the product that generate the least income and by much?--
+--What's the product that generates the least income and by much?--
 
 select t.product_id,
 	p.name,
@@ -108,14 +108,14 @@ order by 3 asc
 limit 1;
 
 
--- The organization want to ascertain the income realize from sales--
+-- How much does the organization realize from sales?--
 
 select 
 	sum(amount) as total_income
 from Transaction
 where amount is not null;
 
-/*The organization want to ascertain the amount they generate from each product*/
+/*How much does the organization generate from each product?*/
 
 select 
 	p.name,
@@ -127,7 +127,7 @@ group by 1
 order by 2 desc;
 
 
---Product that generate the highest income and by how much--
+--What product generates the highest income and by how much?--
 
 select
 	 p.name,
@@ -152,7 +152,7 @@ order by 2 desc
 limit 5;
 
 
---which customer generate least income and by how much?--
+--Which customer generates least income and by how much?--
 
 select distinct t.customer_id,
 	concat(first_name, ' ', last_name) as full_name,
@@ -164,7 +164,7 @@ group by 1,2
 order by 3,2 asc
 limit 5;
 
---which of the employee spend the least day at angie.--
+--Which of the employees spent the least day at angie?--
 
 select employee_id,
 	concat(first_name,' ', last_name) as full_name,
@@ -178,7 +178,7 @@ order by 5 asc
 limit 1;
 
 
---What is the organization busiest hour?--
+--What's the organization busiest hour?--
 
 select
 	date_part('hour', paid_at) as hour,
@@ -190,7 +190,7 @@ order by 2 desc
 limit 1;
 
 
--- Which day of the week does the organization sales the most--
+--What's the organization busiest day of the week?--
 
 select 
 	to_char(paid_at, 'Day') as day,
@@ -203,7 +203,7 @@ limit 1;
 
 
 
---Which month of the year does the organization makes the most sales--
+--What's the organization busiest month of the year?--
 
 select 
 	sum(amount) as total_amount,
